@@ -25,3 +25,9 @@ Then `make` to build this code sample, and then
 cd bin
 ./app
 ```
+
+# Acknowledgement
+
+The interpreter driver comes from Parity's interpreter.rs.
+
+The fib code comes from Tony. Thanks to Tony!
