@@ -17,7 +17,7 @@ cd wasm-fib
 cargo build --target wasm32-unknown-unknown --release
 ```
 
-The generated wasm file is located at `wasm-fib/target/wasm32-unknown-unknown/release/wasm_fib.wasm`. Copy this file to `bin/`.
+The generated wasm file is located at `wasm-fib/target/wasm32-unknown-unknown/release/wasm_fib.wasm`. Copy this file to `bin/xx.wasm`.
 
 Then `make` to build this code sample, and then
 
