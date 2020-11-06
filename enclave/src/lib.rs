@@ -49,6 +49,9 @@ extern crate serde_json;
 
 include!("../../def.rs");
 
+extern crate shared_struct;
+use shared_struct::MySharedStruct;
+
 #[no_mangle]
 pub extern "C" fn say_something(some_string: *const u8, some_len: usize) -> sgx_status_t {
 
@@ -81,6 +84,8 @@ pub extern "C" fn say_something(some_string: *const u8, some_len: usize) -> sgx_
     println!("Deseralizing json: {}", json_str);
     let me: MyStruct = serde_json::from_str(json_str).unwrap();
     println!("deseralized me = {:?}", me);
+    let me: MySharedStruct = serde_json::from_str(json_str).unwrap();
+    println!("deseralized shared me = {:?}", me);
 
     wasmi_main();
 
