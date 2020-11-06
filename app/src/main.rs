@@ -39,6 +39,11 @@ use std::path;
 static ENCLAVE_FILE: &'static str = "enclave.signed.so";
 static ENCLAVE_TOKEN: &'static str = "enclave.token";
 
+#[macro_use]
+extern crate serde;
+
+include!("../../def.rs");
+
 extern {
     fn say_something(eid: sgx_enclave_id_t, retval: *mut sgx_status_t,
                      some_string: *const u8, len: usize) -> sgx_status_t;
@@ -113,6 +118,10 @@ fn init_enclave() -> SgxResult<SgxEnclave> {
 }
 
 fn main() {
+    let me: MyStruct = MyStruct { name: "president".to_string(), age: 333 };
+    println!("i am {:?}", me);
+    let json: String = serde_json::to_string(&me).unwrap();
+    println!("Serialized json = {}", json);
 
     let enclave = match init_enclave() {
         Ok(r) => {

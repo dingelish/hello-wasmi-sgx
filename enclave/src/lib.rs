@@ -43,6 +43,12 @@ use std::vec::Vec;
 use std::io::{self, Write};
 use std::slice;
 
+#[macro_use]
+extern crate serde;
+extern crate serde_json;
+
+include!("../../def.rs");
+
 #[no_mangle]
 pub extern "C" fn say_something(some_string: *const u8, some_len: usize) -> sgx_status_t {
 
@@ -70,6 +76,11 @@ pub extern "C" fn say_something(some_string: *const u8, some_len: usize) -> sgx_
 
     // Ocall to normal world for output
     println!("{}", &hello_string);
+
+    let json_str = r#"{"name":"president","age":333}"#;
+    println!("Deseralizing json: {}", json_str);
+    let me: MyStruct = serde_json::from_str(json_str).unwrap();
+    println!("deseralized me = {:?}", me);
 
     wasmi_main();
 
