@@ -125,7 +125,7 @@ fn main() {
     println!("i am {:?}", me);
     let json: String = serde_json::to_string(&me).unwrap();
     println!("Serialized json = {}", json);
-    let me: MySharedStruct = MySharedStruct { name: "president".to_string(), age: 333 };
+    let me: MySharedStruct = MySharedStruct { name: "president".to_string(), age: 333, big_array: [100;64] };
     println!("i am {:?}", me);
     let json: String = serde_json::to_string(&me).unwrap();
     println!("Serialized json = {}", json);

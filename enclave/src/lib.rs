@@ -84,6 +84,7 @@ pub extern "C" fn say_something(some_string: *const u8, some_len: usize) -> sgx_
     println!("Deseralizing json: {}", json_str);
     let me: MyStruct = serde_json::from_str(json_str).unwrap();
     println!("deseralized me = {:?}", me);
+    let json_str = r#"{"name":"president","age":333,"big_array":[100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100]}"#;
     let me: MySharedStruct = serde_json::from_str(json_str).unwrap();
     println!("deseralized shared me = {:?}", me);
 
